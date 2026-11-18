@@ -6,8 +6,8 @@ descarga la versión más reciente (el repositorio se actualiza a diario desde Y
 lo que puede cambiar los resultados.
 
 Uso:
-    python scripts/descargar_datos.py            # snapshot del proyecto
-    python scripts/descargar_datos.py --ultimo   # datos más recientes
+    python descargar_datos.py            # snapshot del proyecto
+    python descargar_datos.py --ultimo   # datos más recientes
 """
 import argparse
 from io import StringIO
@@ -18,7 +18,7 @@ import pandas as pd
 
 COMMIT = "482c0232f216525ea78689a573a7352c77fd8f6d"
 REPO = "https://raw.githubusercontent.com/datasets/s-and-p-500-companies-financials"
-DESTINO = Path(__file__).resolve().parents[1] / "data" / "raw"
+DESTINO = Path(__file__).resolve().parent
 
 
 def leer(url: str) -> str:

@@ -8,8 +8,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from src.datos import VARIABLES, cargar_crudos, preparar
-from src.modelo import (ajustar_acp, ajustar_kmeans, estabilidad, estandarizar, evaluar_k,
+from datos import VARIABLES, cargar_crudos, preparar
+from modelo import (ajustar_acp, ajustar_kmeans, estabilidad, estandarizar, evaluar_k,
                         nombrar_grupos, sugerir_componentes, v_de_cramer)
 
 st.set_page_config(page_title="Radiografía del S&P 500", page_icon="📊", layout="wide")

@@ -36,11 +36,11 @@ el sector.
 | **Observación** | Una empresa del S&P 500 (corte transversal). |
 | **Cobertura** | 503 empresas en la lista → **419 en el análisis**. |
 
-Los archivos están en `data/raw/`. Para volver a descargarlos:
+Los archivos crudos son `constituents-financials.csv` y `constituents_gics.csv`. Para volver a descargarlos:
 
 ```bash
-python scripts/descargar_datos.py            # mismo snapshot del proyecto
-python scripts/descargar_datos.py --ultimo   # datos más recientes (los resultados cambiarán)
+python descargar_datos.py            # mismo snapshot del proyecto
+python descargar_datos.py --ultimo   # datos más recientes (los resultados cambiarán)
 ```
 
 ### Variables construidas
@@ -65,13 +65,13 @@ python scripts/descargar_datos.py --ultimo   # datos más recientes (los resulta
 
 ## 3. Metodología
 
-1. **Limpieza** (`src/datos.py`): se eliminan 17 empresas sin cotización y se excluye el sector Financials (67), cuyos
+1. **Limpieza** (`datos.py`): se eliminan 17 empresas sin cotización y se excluye el sector Financials (67), cuyos
    márgenes no son comparables y que en su mayoría no reporta EBITDA. No hay duplicados ni otros faltantes. `Symbol` y
    `Name` son identificadores y no entran al modelo.
 2. **Transformaciones:** razones en lugar de niveles en dólares, inversos (E/P, B/P) para manejar pérdidas y patrimonio
    negativo, logaritmos para las variables asimétricas y **winsorización al 1 %** en cada cola.
 3. **Estandarización** (media 0, desviación 1) antes del ACP y K-Means.
-4. **ACP** (`src/modelo.py`): se conservan **4 componentes**, según el criterio de Kaiser (valores propios > 1) y el
+4. **ACP** (`modelo.py`): se conservan **4 componentes**, según el criterio de Kaiser (valores propios > 1) y el
    umbral del 75 % de varianza. Juntos explican el **77,8 %**.
 5. **K-Means** sobre los 4 componentes, con K entre 2 y 10, evaluado con el método del codo, el coeficiente de silueta y
    la estabilidad entre semillas (ARI). Se elige **K = 5**.
@@ -129,13 +129,13 @@ y el archivo `app.py`.
 ## 6. Estructura
 
 ```
-├── app.py                     # Aplicación Streamlit (6 secciones)
-├── src/
-│   ├── datos.py               # Carga, limpieza y construcción de variables
-│   └── modelo.py              # Estandarización, ACP, K-Means, silueta, estabilidad, V de Cramér
-├── scripts/descargar_datos.py # Descarga reproducible de los datos crudos
-├── data/raw/                  # Datos crudos (snapshot 17-nov-2026)
-├── .streamlit/config.toml     # Tema visual
+├── app.py                         # Aplicación Streamlit (6 secciones)
+├── datos.py                       # Carga, limpieza y construcción de variables
+├── modelo.py                      # Estandarización, ACP, K-Means, silueta, estabilidad, V de Cramér
+├── descargar_datos.py             # Descarga reproducible de los datos crudos
+├── constituents-financials.csv    # Datos financieros (snapshot 17-nov-2026)
+├── constituents_gics.csv          # Sector GICS de cada empresa
+├── config.toml                    # Tema visual (opcional)
 └── requirements.txt
 ```
 

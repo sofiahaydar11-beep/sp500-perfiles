@@ -8,9 +8,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-RAIZ = Path(__file__).resolve().parents[1]
-RUTA_FIN = RAIZ / "data" / "raw" / "constituents-financials.csv"
-RUTA_GICS = RAIZ / "data" / "raw" / "constituents_gics.csv"
+RAIZ = Path(__file__).resolve().parent
+RUTA_FIN = RAIZ / "constituents-financials.csv"
+RUTA_GICS = RAIZ / "constituents_gics.csv"
 
 # Variables analíticas: nombre interno -> (etiqueta legible, descripción)
 VARIABLES = {
