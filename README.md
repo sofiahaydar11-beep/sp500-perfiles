@@ -3,7 +3,7 @@
 **Taller individual: ACP y K-Means** · Machine Learning aplicado a Economía y Finanzas · Pontificia Universidad Javeriana Cali
 Autora: Sofia Haydar
 
-🔗 **Aplicación:** `<pega aquí el enlace de Streamlit Cloud>`
+🔗 **Aplicación:** https://videosp500.streamlit.app/
 🎥 **Video de sustentación:** `<pega aquí el enlace del video>`
 
 ---
