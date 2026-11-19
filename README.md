@@ -4,7 +4,7 @@
 Autora: Sofia Haydar
 
 🔗 **Aplicación:** https://videosp500.streamlit.app/
-🎥 **Video de sustentación:** `<pega aquí el enlace del video>`
+🎥 **Video de sustentación:** https://youtu.be/xHayX4sFrPA
 
 ---
 
